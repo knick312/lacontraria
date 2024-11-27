@@ -1,188 +1,141 @@
-/* Base para todo el sitio */
+/* estilos1.css */
+
+/* Reset básico */
+body, h1, h2, h3, p, ul, li, input, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuente y fondo */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
     background-color: #fafafa;
     color: #333;
-}
-
-/* Encabezado fijo */
-.header-fixed {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-}
-
-.header-fixed ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-}
-
-.header-fixed ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-}
-
-.header-fixed ul li a:hover {
-    color: #007bff;
-}
-
-/* Contenedor principal */
-main {
-    margin-top: 70px;
-    padding: 20px;
-}
-
-/* Estilo del feed */
-.feed {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
 }
 
-/* Cada publicación */
-.post {
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+/* Menú fijo */
+.header-fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+    z-index: 1000;
+}
+
+.header-fixed nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 10px;
+}
+
+.header-fixed nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Feed de publicaciones */
+.content-feed {
+    margin-top: 70px;
     width: 90%;
     max-width: 600px;
-    padding: 15px;
+}
+
+.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin: 15px 0;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
 .post img {
     width: 100%;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: 10px;
 }
 
 .post h3 {
-    margin: 0;
-    font-size: 1.2em;
-    color: #222;
+    font-size: 18px;
+    margin: 10px 0;
 }
 
 .post p {
-    font-size: 0.9em;
+    font-size: 14px;
     color: #555;
 }
 
 /* Botón de contacto */
-.post button {
+.contact-button {
     display: block;
-    margin-top: 10px;
-    padding: 10px 15px;
-    border: none;
-    background-color: #007bff;
+    text-align: center;
+    background-color: #3897f0;
     color: #fff;
-    font-size: 1em;
+    padding: 10px 15px;
     border-radius: 5px;
-    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-.post button:hover {
-    background-color: #0056b3;
-}
-
-
-/* Base del panel */
+/* Panel de administración */
 .content-admin {
     margin-top: 70px;
-    padding: 20px;
-}
-
-.admin-section {
-    display: none; /* Oculto hasta seleccionar */
-}
-
-.admin-section.active {
-    display: block;
+    width: 90%;
+    max-width: 800px;
 }
 
 .styled-table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
 }
 
-.styled-table thead tr {
-    background-color: #007bff;
-    color: #fff;
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
     text-align: left;
 }
 
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
+.styled-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
 }
 
-.styled-table tbody tr {
-    border-bottom: 1px solid #ddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #007bff;
-}
-
-/* Modal */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
-    justify-content: center;
     align-items: center;
-    z-index: 2000;
+    justify-content: center;
 }
 
 .modal-content {
-    background: #fff;
+    background-color: #fff;
     padding: 20px;
-    border-radius: 8px;
-    text-align: center;
+    border-radius: 10px;
     width: 90%;
     max-width: 400px;
 }
 
-.modal-content input {
-    display: block;
-    width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
-
-.modal-content button {
-    background-color: #007bff;
-    color: #fff;
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
     border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
+    font-size: 20px;
     cursor: pointer;
-}
-
-.modal-content button:hover {
-    background-color: #0056b3;
 }
