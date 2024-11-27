@@ -38,3 +38,22 @@ function logout() {
     alert('Sesión cerrada.');
     window.location.href = './index.html';
 }
+
+function verifyAdminAccess(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('adminUsername').value;
+    const password = document.getElementById('adminPassword').value;
+
+    // Usuario y contraseña predefinidos
+    const validUsername = "admin";
+    const validPassword = "admin123";
+
+    if (username === validUsername && password === validPassword) {
+        document.getElementById('loginPanel').style.display = 'none';
+        document.getElementById('adminPanelContent').style.display = 'block';
+    } else {
+        alert("Usuario o contraseña incorrectos.");
+    }
+}
+
