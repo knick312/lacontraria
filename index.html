@@ -10,18 +10,36 @@
 </head>
 <body>
 
-    <!-- Menú de navegación -->
-    <header class="header-fixed">
-        <nav>
-            <ul>
-                <li><a href="./index.html">Inicio</a></li>
-                <li><a href="#">Pastelería</a></li>
-                <li><a href="#">Contacto</a></li>
-                <li><a href="#" id="adminLink">Administrador</a></li>
-                <li><a href="#" id="logoutLink" style="display: none;">Cerrar sesión</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Menú -->
+<header class="header-fixed">
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Pastelería</a></li>
+            <li><a href="#">Contacto</a></li>
+            <!-- Enlace para abrir el modal de administrador -->
+            <li><a href="#" id="adminLink">Administrador</a></li>
+            <li><a href="#" id="logoutLink" style="display: none;">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Modal de inicio de sesión -->
+<div id="loginModal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeModal()">&times;</span>
+        <h2>Iniciar sesión</h2>
+        <form id="loginForm">
+            <label for="username">Usuario:</label>
+            <input type="text" id="username" required>
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" required>
+            <button type="button" onclick="login()">Iniciar sesión</button>
+            <button type="button" onclick="closeModal()">Cerrar</button>
+        </form>
+    </div>
+</div>
+
 
     <!-- Contenido principal: Feed de publicaciones -->
     <main class="content-feed">
