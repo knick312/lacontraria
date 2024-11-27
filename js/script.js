@@ -46,3 +46,14 @@ function login() {
         alert("Usuario o contraseña incorrectos.");
     }
 }
+
+// Mostrar el modal de inicio de sesión cuando se haga clic en "Administrador"
+document.getElementById('adminLink').addEventListener('click', function (event) {
+    event.preventDefault();  // Prevenir el comportamiento predeterminado del enlace
+    document.getElementById('loginModal').style.display = 'block';  // Mostrar el modal
+});
+
+// Función para cerrar el modal de inicio de sesión
+function closeModal() {
+    document.getElementById('loginModal').style.display = 'none';  // Ocultar el modal
+}
