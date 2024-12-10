@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio - Publicaciones</title>
     <link rel="stylesheet" href="./css/estilos1.css">
-    <script src="./js/admin.js"></script>
+    <script src="./js/admin.js" defer></script>
     <script src="./js/script.js" defer></script>
 </head>
 <body>
@@ -63,6 +63,12 @@
                 <textarea id="postDescription" rows="3" required></textarea>
                 <button type="button" onclick="uploadPost()">Subir</button>
             </form>
+            <hr>
+            <div id="manualPostSection" class="admin-section">
+                <h3>Agregar publicación desde código HTML</h3>
+                <textarea id="manualPostInput" placeholder="Escribe el código HTML de la publicación aquí..." rows="5"></textarea>
+                <button id="manualPostButton" onclick="addManualPost()">Subir publicación</button>
+            </div>
         </div>
     </div>
 
