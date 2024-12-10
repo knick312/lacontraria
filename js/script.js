@@ -1,59 +1,62 @@
-// Simulación de publicaciones
-const posts = [
-    { id: 1, title: "Primera Publicación", type: "Noticia" },
-    { id: 2, title: "Segunda Publicación", type: "Blog" },
-];
+let isRegistering = false;
 
-// Cargar publicaciones dinámicamente
-function loadPosts() {
-    const postsContainer = document.getElementById('postsContainer');
-    posts.forEach(post => {
-        const postDiv = document.createElement('div');
-        postDiv.className = 'post';
-        postDiv.innerHTML = `
-            <h3>${post.title}</h3>
-            <p>Tipo: ${post.type}</p>
-        `;
-        postsContainer.appendChild(postDiv);
-    });
+function openAdminModal() {
+    document.getElementById("adminModal").style.display = "flex";
 }
 
-// Inicializar la carga de publicaciones
-document.addEventListener('DOMContentLoaded', loadPosts);
-
-// Función para mostrar el modal de login
-document.getElementById('adminLink').addEventListener('click', function (event) {
-    event.preventDefault();  // Prevenir el comportamiento predeterminado del enlace
-    document.getElementById('loginModal').style.display = 'block';  // Mostrar el modal
-});
-
-// Función para cerrar el modal
-function closeModal() {
-    document.getElementById('loginModal').style.display = 'none';
+function closeAdminModal() {
+    document.getElementById("adminModal").style.display = "none";
 }
 
-// Función para manejar el inicio de sesión
-function login() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+function toggleAdminForm() {
+    isRegistering = !isRegistering;
+    document.getElementById("registerFields").style.display = isRegistering ? "block" : "none";
+    document.getElementById("modalTitle").textContent = isRegistering ? "Registro" : "Iniciar sesión";
+    document.getElementById("submitButton").textContent = isRegistering ? "Registrar" : "Iniciar sesión";
+    document.getElementById("toggleFormText").textContent = isRegistering ? "¿Ya tienes cuenta? Inicia sesión" : "¿No tienes cuenta? Regístrate";
+}
 
-    // Verificar las credenciales de usuario
-    if (username === "admin" && password === "admin123") {
-        alert("Bienvenido al panel de administración.");
-        // Redirige al panel de administración
-        window.location.href = "./admin.html";
+function handleAdminAction() {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const email = isRegistering ? document.getElementById("email").value : null;
+
+    if (isRegistering) {
+        alert(`Registrado: ${username}, ${email}`);
     } else {
-        alert("Usuario o contraseña incorrectos.");
+        alert(`Logueado: ${username}`);
+        closeAdminModal();
+        document.getElementById("logoutLink").style.display = "block";
+        openAdminInterface();
     }
 }
 
-// Mostrar el modal de inicio de sesión cuando se haga clic en "Administrador"
-document.getElementById('adminLink').addEventListener('click', function (event) {
-    event.preventDefault();  // Prevenir el comportamiento predeterminado del enlace
-    document.getElementById('loginModal').style.display = 'block';  // Mostrar el modal
-});
+function logout() {
+    document.getElementById("logoutLink").style.display = "none";
+    alert("Sesión cerrada");
+}
 
-// Función para cerrar el modal de inicio de sesión
-function closeModal() {
-    document.getElementById('loginModal').style.display = 'none';  // Ocultar el modal
+function openAdminInterface() {
+    document.getElementById("adminInterface").style.display = "flex";
+}
+
+function closeAdminInterface() {
+    document.getElementById("adminInterface").style.display = "none";
+}
+
+function uploadPost() {
+    const image = document.getElementById("postImage").files[0];
+    const description = document.getElementById("postDescription").value;
+
+    if (image && description) {
+        const reader = new FileReader();
+        reader.onload = function () {
+            const postsContainer = document.getElementById("postsContainer");
+            const post = document.createElement("div");
+            post.innerHTML = `<img src="${reader.result}" alt="Publicación" style="width: 100%; border-radius: 5px;"><p>${description}</p>`;
+            postsContainer.appendChild(post);
+            closeAdminInterface();
+        };
+        reader.readAsDataURL(image);
+    }
 }
