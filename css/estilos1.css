@@ -1,213 +1,87 @@
-/* estilos1.css */
-
-/* Reset básico */
-body, h1, h2, h3, p, ul, li, input, button {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Fuente y fondo */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fafafa;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
-/* Menú fijo */
 .header-fixed {
+    background-color: #333;
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #fff;
-    border-bottom: 1px solid #ddd;
     z-index: 1000;
 }
 
-.header-fixed nav ul {
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: space-around;
-    list-style: none;
-    padding: 10px;
-}
-
-.header-fixed nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    font-size: 16px;
-}
-
-/* Feed de publicaciones */
-.content-feed {
-    margin-top: 70px;
-    width: 90%;
-    max-width: 600px;
-}
-
-.post {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    margin: 15px 0;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-}
-
-.post img {
-    width: 100%;
-    border-radius: 10px;
-}
-
-.post h3 {
-    font-size: 18px;
-    margin: 10px 0;
-}
-
-.post p {
-    font-size: 14px;
-    color: #555;
-}
-
-/* Botón de contacto */
-.contact-button {
-    display: block;
-    text-align: center;
-    background-color: #3897f0;
-    color: #fff;
-    padding: 10px 15px;
-    border-radius: 5px;
-    text-decoration: none;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-/* Panel de administración */
-.content-admin {
-    margin-top: 70px;
-    width: 90%;
-    max-width: 800px;
-}
-
-.styled-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.styled-table th, .styled-table td {
-    border: 1px solid #ddd;
-    padding: 10px;
-    text-align: left;
-}
-
-.styled-table th {
-    background-color: #f4f4f4;
-    font-weight: bold;
-}
-
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
     justify-content: center;
 }
 
-.modal-content {
-    background-color: #fff;
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    display: block;
+}
+
+.content-feed {
+    margin-top: 60px;
     padding: 20px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 400px;
+    text-align: center;
 }
 
-.close-button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
+.posts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
-/* Estilo para el contenedor del modal */
+.contact-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
 .modal {
-    display: none; /* Inicialmente está oculto */
     position: fixed;
-    z-index: 1; /* Se asegura de que el modal esté por encima del contenido */
-    left: 0;
     top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4); /* Fondo oscuro con transparencia */
-}
-
-/* Estilo para el contenido del modal */
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%; /* Ancho del modal */
-    max-width: 400px; /* Máximo ancho */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Estilo para el botón de cierre */
-.close-button {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    cursor: pointer;
-}
-
-.close-button:hover,
-.close-button:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Estilos para el formulario de login */
-#loginForm {
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-#loginForm label {
-    margin: 8px 0;
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: left;
+    width: 400px;
 }
 
-#loginForm input {
-    padding: 8px;
-    margin-bottom: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-#loginForm button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
+.close-button {
+    float: right;
     cursor: pointer;
 }
 
-#loginForm button:hover {
-    background-color: #45a049;
+#toggleFormText {
+    color: #007BFF;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
 }
